@@ -32,9 +32,9 @@
     },
     "createDate" : "2012-01-03 03:43:45",
     "labels" : {
-      "medium" : "http://s3.amazonaws.com/",
-      "large" : "http://s3.amazonaws.com/",
-      "icon" : "http://s3.amazonaws.com/"
+      "medium" : "https://s3.amazonaws.com/brewerydbapi/beer/oeGSxs/upload_FiPLQC-medium.png",
+      "large" : "https://s3.amazonaws.com/brewerydbapi/beer/oeGSxs/upload_FiPLQC-large.png",
+      "icon" : "https://s3.amazonaws.com/brewerydbapi/beer/oeGSxs/upload_FiPLQC-icon.png"
     },
     "styleId" : 30,
     "updateDate" : "2012-03-22 14:05:26",
@@ -51,9 +51,9 @@
         "mailingListUrl" : "",
         "updateDate" : "2012-01-02 20:12:39",
         "images" : {
-          "medium" : "http://s3.amazonaws.com/",
-          "large" : "http://s3.amazonaws.com/",
-          "icon" : "http://s3.amazonaws.com/"
+          "medium" : "https://s3.amazonaws.com/brewerydbapi/brewery/KRB0Bo/upload_4HXPU9-medium.png",
+          "large" : "https://s3.amazonaws.com/brewerydbapi/brewery/KRB0Bo/upload_4HXPU9-large.png",
+          "icon" : "https://s3.amazonaws.com/brewerydbapi/brewery/KRB0Bo/upload_4HXPU9-icon.png"
         },
         "established" : "2009",
         "isOrganic" : "N",
