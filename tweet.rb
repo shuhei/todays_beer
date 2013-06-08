@@ -21,7 +21,12 @@ def tweet_beer
   abv = json['data']['abv']
   style = json['data']['style']['name']
 
-  message = "#{name}, #{abv}%, #{style}"
+  breweries = json['data']['breweries'].map do |b|
+    website = b['website'] ? " #{b['website']}" : ''
+    b['name'] + website
+  end
+
+  message = "#{name}, #{abv}% #{style} by #{breweries.join(', ')}"
 
   Twitter.update message
 end
