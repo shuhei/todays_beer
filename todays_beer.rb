@@ -49,5 +49,3 @@ class TodaysBeer
     Twitter.update message
   end
 end
-
-TodaysBeer.new.tweet
