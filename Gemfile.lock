@@ -1,11 +1,20 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    amazon-ecs (2.2.4)
+      nokogiri (~> 1.4)
+      ruby-hmac (~> 0.3)
     dotenv (0.7.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
+    htmlentities (4.3.1)
     multi_json (1.7.6)
     multipart-post (1.2.0)
+    nokogiri (1.5.10)
+    ruby-hmac (0.4.0)
+    sanitize (2.0.3)
+      nokogiri (>= 1.4.4, < 1.6)
+      nokogiri (>= 1.4.4, < 1.6)
     simple_oauth (0.2.0)
     twitter (4.7.0)
       faraday (~> 0.8, < 0.10)
@@ -16,5 +25,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amazon-ecs
   dotenv
+  htmlentities
+  sanitize
   twitter
