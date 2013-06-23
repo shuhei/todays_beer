@@ -40,7 +40,7 @@ module Rakuten
         .merge(@base_params)
         .map {|k, v| "#{lower_camelcase k}=#{CGI::escape v.to_s}" }
         .join('&')
-      camel_verb = verb.to_s.split('_').map(&:capitalize).join
+      camel_verb = upper_camelcase verb
       "https://app.rakuten.co.jp/services/api/#{@target}/#{camel_verb}/#{@version}?#{params}"
     end
 
