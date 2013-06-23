@@ -1,6 +1,15 @@
 #!/usr/bin/env ruby
 
-$: << File.join(File.dirname(__FILE__), '..')
-require 'todays_beer'
+require 'time'
+require_relative '../todays_beer'
+require_relative '../lib/amazon_keg'
+require_relative '../lib/rakuten_keg'
 
-TodaysBeer.new.tweet
+now_in_japan = DateTime.now.new_offset('+09:00')
+
+case now_in_japan.hour
+when 21
+  TodaysBeer.new(AmazonKeg.new).tweet
+when 17
+  TodaysBeer.new(RakutenKeg.new).tweet
+end

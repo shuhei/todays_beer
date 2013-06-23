@@ -14,9 +14,12 @@ Twitter.configure do |config|
 end
 
 class TodaysBeer
+  def initialize keg
+    @keg = keg
+  end
+
   def tweet
-    keg = AmazonKeg.new
-    message = keg.random_tweet
+    message = @keg.random_tweet
     puts message
     Twitter.update message
   end
