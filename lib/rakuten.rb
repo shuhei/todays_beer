@@ -2,6 +2,7 @@
 
 require 'cgi'
 require 'open-uri'
+require 'json'
 
 module Rakuten
   module StringHelper
@@ -42,7 +43,9 @@ module Rakuten
 
     def request verb, options
       url = request_url verb, options
-      response = open url
+      puts url
+      response = open(url).read
+      JSON.parse response
     end
 
     def method_missing method_id, *params

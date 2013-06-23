@@ -10,7 +10,6 @@ class RakutenKeg
     client = Rakuten::IchibaItem.new application_id: ENV['RAKUTEN_APP_ID'],
       affiliate_id: ENV['RAKUTEN_AFFILIATE_ID'],
       version: '20130424'
-    result = client.search keyword: 'ビール', shopCode: 'sake-taniguchi'
-    puts result
+    result = client.search keyword: 'ビール', shop_code: 'sake-taniguchi'
   end
 end
