@@ -88,7 +88,7 @@ describe Rakuten::StringHelper do
       expect(subject.lower_camelcase :hello_world).to eq 'helloWorld'
     end
 
-    it 'converts snakecase string to upper camelcase string' do
+    it 'converts snakecase string to lower camelcase string' do
       expect(subject.lower_camelcase 'hello_world').to eq 'helloWorld'
     end
   end
