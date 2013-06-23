@@ -5,6 +5,9 @@ require 'open-uri'
 require 'json'
 
 module Rakuten
+  MAX_PAGE = 100
+  MAX_PER_PAGE = 30
+
   module StringHelper
     def lower_camelcase str
       upper = upper_camelcase(str)
@@ -43,7 +46,6 @@ module Rakuten
 
     def request verb, options
       url = request_url verb, options
-      puts url
       response = open(url).read
       JSON.parse response
     end

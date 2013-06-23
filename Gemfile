@@ -9,3 +9,7 @@ gem 'amazon-ecs'
 
 gem 'htmlentities'
 gem 'sanitize'
+
+group :development, :test do
+  gem 'rspec'
+end

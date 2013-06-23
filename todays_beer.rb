@@ -3,8 +3,8 @@
 require 'dotenv'
 Dotenv.load
 require 'twitter'
-require_relative 'amazon_keg'
-require_relative 'rakuten_keg'
+require_relative 'lib/amazon_keg'
+require_relative 'lib/rakuten_keg'
 
 Twitter.configure do |config|
   config.consumer_key = ENV['CONSUMER_KEY']
