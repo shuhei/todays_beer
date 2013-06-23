@@ -39,7 +39,7 @@ describe Rakuten::Client do
         let(:params) { { target: 'IchibaItem', version: '20130424', application_id: 'app' } }
 
         it 'sets application ID as a parameter' do
-          expect(url).to match /application_id=app/
+          expect(url).to match /applicationId=app/
         end
       end
     end
@@ -62,6 +62,34 @@ describe Rakuten::IchibaGenre do
 
     it 'sets target' do
       expect(subject.instance_variable_get '@target').to eq 'IchibaGenre'
+    end
+  end
+end
+
+describe Rakuten::StringHelper do
+  class SomeObject
+    include Rakuten::StringHelper
+  end
+
+  subject { SomeObject.new }
+
+  describe '#upper_camelcase' do
+    it 'converts snakecase symbol to upper camelcase string' do
+      expect(subject.upper_camelcase :hello_world).to eq 'HelloWorld'
+    end
+
+    it 'converts snakecase string to upper camelcase string' do
+      expect(subject.upper_camelcase 'hello_world').to eq 'HelloWorld'
+    end
+  end
+
+  describe '#lower_camelcase' do
+    it 'converts snakecase symbol to lower camelcase string' do
+      expect(subject.lower_camelcase :hello_world).to eq 'helloWorld'
+    end
+
+    it 'converts snakecase string to upper camelcase string' do
+      expect(subject.lower_camelcase 'hello_world').to eq 'helloWorld'
     end
   end
 end

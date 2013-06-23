@@ -4,7 +4,20 @@ require 'cgi'
 require 'open-uri'
 
 module Rakuten
+  module StringHelper
+    def lower_camelcase str
+      upper = upper_camelcase(str)
+      "#{upper[0].downcase}#{upper[1..-1]}"
+    end
+
+    def upper_camelcase str
+      str.to_s.split('_').map(&:capitalize).join
+    end
+  end
+
   class Client
+    include StringHelper
+
     def initialize options
       @base_params = {
         application_id: options[:application_id],
@@ -21,7 +34,7 @@ module Rakuten
 
       params = options
         .merge(@base_params)
-        .map {|k, v| "#{k}=#{CGI::escape v.to_s}" }
+        .map {|k, v| "#{lower_camelcase k}=#{CGI::escape v.to_s}" }
         .join('&')
       camel_verb = verb.to_s.split('_').map(&:capitalize).join
       "https://app.rakuten.co.jp/services/api/#{@target}/#{camel_verb}/#{@version}?#{params}"
