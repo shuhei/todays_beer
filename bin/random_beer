@@ -9,7 +9,7 @@ now_in_japan = DateTime.now.new_offset('+09:00')
 
 case now_in_japan.hour
 when 21
-  TodaysBeer.new(AmazonKeg.new).tweet
+  TodaysBeer.new(RakutenKeg.new).tweet
 when 17
   TodaysBeer.new(RakutenKeg.new).tweet
 end
