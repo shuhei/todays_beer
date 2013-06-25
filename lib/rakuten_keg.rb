@@ -37,6 +37,7 @@ class RakutenKeg
     caption = item['itemCaption']
     caption = caption.sub /※こちらの商品の賞味期限は\d+年\d+月\d+日となっております。 /, ''
     caption = caption.sub /内容量 \d+ml 保存方法 [^ ]+ /, ''
+    caption = caption.sub /製造者 (.+) 商品説明/, '(\1)'
     affiliate_url = item['affiliateUrl']
 
     "「#{name}」#{caption}"[0...110] + '... ' + affiliate_url
