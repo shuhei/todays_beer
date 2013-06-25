@@ -1,6 +1,6 @@
 # Today's Beer
 
-Tweets random beers from online shops like Amazon and Rakuten.
+Tweets random beers from online shops like Amazon and Rakuten. This project is basically for teaching me vast varieties of beer.
 
 ## Deployment
 
