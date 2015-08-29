@@ -23,7 +23,6 @@ GEM
     ruby-hmac (0.4.0)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
-      nokogiri (>= 1.4.4, < 1.6)
     simple_oauth (0.2.0)
     twitter (4.7.0)
       faraday (~> 0.8, < 0.10)
@@ -40,3 +39,6 @@ DEPENDENCIES
   rspec
   sanitize
   twitter
+
+BUNDLED WITH
+   1.10.6
