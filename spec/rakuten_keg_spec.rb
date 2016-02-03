@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require_relative 'spec_helper'
 require_relative '../lib/rakuten_keg'
 
@@ -12,7 +10,7 @@ describe RakutenKeg do
       'itemCaption' => '※こちらの商品の賞味期限は2013年7月11日となっております。 内容量 330ml 保存方法 冷蔵 度数 4.5% 製造者 株式会社阿蘇ファームランド 商品説明 ここから商品の説明です。',
       'affiliateUrl' => 'http://rakuten.com/beer/123'
     } }
-    subject { keg.create_tweet item }
+    subject { keg.create_tweet(item) }
 
     it 'removes note about expiry date' do
       expect(subject).not_to match(/※こちらの商品の賞味期限は/)

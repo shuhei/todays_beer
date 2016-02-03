@@ -1,5 +1,3 @@
-# encoding:utf-8
-
 require 'amazon/ecs'
 require 'htmlentities'
 require 'sanitize'
@@ -16,20 +14,23 @@ class AmazonKeg
   end
 
   def random_beer
-    res = Amazon::Ecs.item_search 'クラフトビール -セット',
-      country: 'jp', search_index: 'Grocery', maximum_price: 1500,
-      response_group: 'ItemAttributes,EditorialReview', item_page: rand(1..10)
+    res = Amazon::Ecs.item_search('クラフトビール -セット',
+                                  country: 'jp',
+                                  search_index: 'Grocery',
+                                  maximum_price: 1500,
+                                  response_group: 'ItemAttributes,EditorialReview',
+                                  item_page: rand(1..10))
 
     res.items[rand 0...res.items.size]
   end
 
-  def create_tweet item
+  def create_tweet(item)
     title = item.get('ItemAttributes/Title').split('（')[0].strip
     url = item.get 'DetailPageURL'
 
     desc = item.get 'EditorialReviews/EditorialReview/Content'
-    desc = HTMLEntities.new.decode desc
-    desc = Sanitize.clean desc
+    desc = HTMLEntities.new.decode(desc)
+    desc = Sanitize.clean(desc)
     # Remove unnecessary spaces.
     desc = desc.gsub(/\r?\n/, ' ').gsub(/([、。])\s+/, '\1').gsub(/\s+/, ' ')
 

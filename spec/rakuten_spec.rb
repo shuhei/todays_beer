@@ -1,17 +1,15 @@
-# coding: utf-8
-
 require_relative 'spec_helper'
 require_relative '../lib/rakuten'
 
 describe Rakuten::Client do
-  let(:client) { Rakuten::Client.new params }
+  let(:client) { Rakuten::Client.new(params) }
 
   describe '#request_url' do
     context 'without target' do
       let(:params) { { version: '20130424' } }
 
       it 'raises an error' do
-        expect { client.request_url 'verb', {} }.to raise_error
+        expect { client.request_url 'verb', {} }.to raise_error(RuntimeError, /^No target specified/)
       end
     end
 
@@ -19,7 +17,7 @@ describe Rakuten::Client do
       let(:params) { { target: 'IchibaItem' } }
 
       it 'raises an error' do
-        expect { client.request_url 'verb', {} }.to raise_error
+        expect { client.request_url 'verb', {} }.to raise_error(RuntimeError, /^No API version specified/)
       end
     end
 
@@ -39,7 +37,7 @@ describe Rakuten::Client do
         let(:params) { { target: 'IchibaItem', version: '20130424', application_id: 'app' } }
 
         it 'sets application ID as a parameter' do
-          expect(url).to match /applicationId=app/
+          expect(url).to match(/applicationId=app/)
         end
       end
     end
@@ -51,7 +49,7 @@ describe Rakuten::IchibaItem do
     subject { Rakuten::IchibaItem.new({}) }
 
     it 'sets target' do
-      expect(subject.instance_variable_get '@target').to eq 'IchibaItem'
+      expect(subject.instance_variable_get '@target').to eq('IchibaItem')
     end
   end
 end
@@ -61,7 +59,7 @@ describe Rakuten::IchibaGenre do
     subject { Rakuten::IchibaGenre.new({}) }
 
     it 'sets target' do
-      expect(subject.instance_variable_get '@target').to eq 'IchibaGenre'
+      expect(subject.instance_variable_get '@target').to eq('IchibaGenre')
     end
   end
 end
@@ -75,21 +73,21 @@ describe Rakuten::StringHelper do
 
   describe '#upper_camelcase' do
     it 'converts snakecase symbol to upper camelcase string' do
-      expect(subject.upper_camelcase :hello_world).to eq 'HelloWorld'
+      expect(subject.upper_camelcase :hello_world).to eq('HelloWorld')
     end
 
     it 'converts snakecase string to upper camelcase string' do
-      expect(subject.upper_camelcase 'hello_world').to eq 'HelloWorld'
+      expect(subject.upper_camelcase 'hello_world').to eq('HelloWorld')
     end
   end
 
   describe '#lower_camelcase' do
     it 'converts snakecase symbol to lower camelcase string' do
-      expect(subject.lower_camelcase :hello_world).to eq 'helloWorld'
+      expect(subject.lower_camelcase :hello_world).to eq('helloWorld')
     end
 
     it 'converts snakecase string to lower camelcase string' do
-      expect(subject.lower_camelcase 'hello_world').to eq 'helloWorld'
+      expect(subject.lower_camelcase 'hello_world').to eq('helloWorld')
     end
   end
 end
